@@ -1,0 +1,138 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+}
+
+.first-entry {
+    display: column;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    /* min-height: 100vh; */
+    /* 高度至少为视口高度，确保内容居中 */
+    text-align: center;
+    /* 段落文本居中 */
+}
+
+
+.first-entry .entry-header {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.first-entry .entry-header h1 {
+    font-size: 34px;
+    line-height: 1.3;
+    text-align: left;
+    font-family: "NotoSerifSC", sans-serif;
+}
+
+.first-entry .entry-content {
+    margin: 14px 0;
+    font-size: 16px;
+    padding: var(--gap);
+    /* 内边距，增加视觉效果 */
+}
+
+.first-entry .entry-content p {
+    line-height: 2.5;
+    /* 行高，用于提升可读性 */
+    text-align: center;
+    /* 文字内容居中对齐 */
+    margin: 0;
+    /* 清除段落的默认外边距 */
+    font-family: "NotoSerifSC", sans-serif;
+    /* font-weight: bold; 使用粗体 */
+}
+
+.first-entry .entry-footer {
+    font-size: 14px;
+}
+
+/* .home-info .entry-content {
+    -webkit-line-clamp: unset;
+} */
+
+.line-divider {
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 8px, currentcolor 8px, currentcolor 10px);
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 15 / 1;
+    margin: 1em auto;
+    border: 0px;
+    display: block;
+    color: inherit
+}
+
+
+.post-entry {
+    position: relative;
+    margin-bottom: var(--gap);
+    padding: var(--gap);
+    background: var(--entry);
+    border-radius: var(--radius);
+    transition: transform 0.1s;
+    border: 1px solid var(--border);
+}
+
+.post-entry:active {
+    transform: scale(0.96);
+}
+
+.tag-entry .entry-cover {
+    display: none;
+}
+
+.entry-header h2 {
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.entry-content {
+    margin: 8px 0;
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.entry-footer {
+    color: var(--primary);
+    font-size: 13px;
+}
+
+.entry-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.entry-cover,
+.entry-isdraft {
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.entry-cover {
+    margin-bottom: var(--gap);
+    text-align: center;
+}
+
+.entry-cover img {
+    border-radius: var(--radius);
+    pointer-events: none;
+    width: 100%;
+    height: auto;
+}
+
+.entry-cover a {
+    color: var(--secondary);
+    box-shadow: 0 1px 0 var(--primary);
+}

@@ -1,0 +1,30 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+  <header class="entry-header">
+    <!-- 网站 Title -->
+    <h1>{{ .Title | markdownify }}</h1>
+    <!-- 自定义斜线样式 -->
+    <hr class="line-divider">
+  </header>
+
+
+  <div class="entry-content">
+    <p>黑夜中</p>
+    <p>渴望一束光的抚慰</p>
+    <p>亦为探寻未知的答案</p>
+    <p>终于</p>
+    <p>于黑暗彼端</p>
+    <p>触碰到了遥远的星辰</p>
+  </div>
+
+  <!-- <div class="entry-content">
+    {{ .Content | markdownify }}
+  </div> -->
+
+  <!-- 社交图标 -->
+  <!-- <footer class="entry-footer">
+    {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+  </footer> -->
+
+</article>
+{{- end -}}
