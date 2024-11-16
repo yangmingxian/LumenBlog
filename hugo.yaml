@@ -3,7 +3,7 @@
 baseURL: "https://yangmingxian.com/"
 title: Lumen
 # copyright: "2015–2024 By Mingxian"
-paginate: 10
+paginate: 20
 theme: [PaperMod]
 
 enableInlineShortcodes: true
@@ -23,10 +23,10 @@ languages:
   en:
     languageName: "English"
     weight: 1
-    taxonomies:
-      category: categories
-      tag: tags
-      series: series
+    # taxonomies:
+    #   category: categories
+    #   tag: tags
+    #   series: series
     menu:
       main:
         # - name: Life
@@ -35,6 +35,14 @@ languages:
         # - name: Tech
         #   url: tech/
         #   weight: 5
+
+        # - identifier: categories
+        - name: Life
+          url: categories/life
+          weight: 2
+        - name: Tech
+          url: categories/technology
+          weight: 2
         - name: About
           url: about/
           weight: 10
@@ -87,6 +95,11 @@ params:
   # defaultTheme: dark
 
   hideFooter: true # to hide default footer
+  hideSummary : true
+  # hideMeta: true
+  hideAuthor: true
+
+  # disableScrollToTop: true
 
   # disableThemeToggle: true
   ShowShareButtons: false
@@ -97,7 +110,7 @@ params:
   ShowPostNavLinks: false # show next and prev post
   ShowBreadCrumbs: false # 页面顶部post的路径
   ShowCodeCopyButtons: true
-  ShowRssButtonInSectionTermList: true
+  ShowRssButtonInSectionTermList: false
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: false

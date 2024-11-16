@@ -1,5 +1,5 @@
 +++
-# title = "ABOUT"
+title = "ABOUT"
 date = "2024-08-10T22:55:00+08:00"
 # dropCap = false
 hidemeta = true

@@ -14,7 +14,7 @@
     --content: #2E2E42;
     --hljs-bg: #2E2E42;
     --code-bg: #2E2E42;
-    --border: #2E2E42;
+    --border: #d7d7d7;
 }
 
 .dark {
@@ -26,7 +26,7 @@
     --content: #A8A8C3;
     --hljs-bg: #A8A8C3;
     --code-bg: #A8A8C3;
-    --border: #A8A8C3;
+    --border: #545454;
 }
 
 .list {
