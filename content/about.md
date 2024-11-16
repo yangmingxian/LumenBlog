@@ -9,7 +9,7 @@ disableShare = true
 <!-- <video src="QmZgXJwFNRAyUEuU36jReXtyjESeTWEGZpcJGuWSnbRTf1" poster="../images/viva-la-vida.jpg"></video> -->
 
 <h2 class="motto">循此苦旅 以达星辰</h2>
-<p style="text-align:center">A bewildered yet steadfast soul traversing the finite infinite cyberspace.</p>
+<p style="text-align:center">A confused but determined soul traversing the finite infinite cyberspace.</p>
 <!-- <p style="text-align:center"><em>I used to rule the world<br>
 Seas would rise when I gave the word<br>
 Now in the morning I sleep alone<br>

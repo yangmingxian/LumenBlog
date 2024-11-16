@@ -3,3 +3,21 @@ This is just a placeholder blank stylesheet so as to support adding custom style
 
 Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
 */
+
+.hidden-text {
+    text-align: center;
+    transition: background-color 0.5s ease;
+    width: 230px;
+    margin: 0 auto;
+    background-color: var(--primary);
+}
+
+.hidden-text:hover {
+    transition: background-color 0.5s ease;
+    background-color: var(--theme);
+}
+
+.hidden-text::selection {
+    color: var(--secondary);
+    background-color: var(--primary);
+}

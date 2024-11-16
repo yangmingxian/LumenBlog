@@ -23,11 +23,13 @@
 }
 
 .logo a {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.logo a img, .logo a svg {
+.logo a img,
+.logo a svg {
     display: inline;
     vertical-align: middle;
     pointer-events: none;
@@ -57,12 +59,13 @@ body:not(.dark) #sun {
     white-space: nowrap;
 }
 
-#menu li + li {
+#menu li+li {
     margin-inline-start: var(--gap);
 }
 
 #menu a {
-    font-size: 16px;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #menu .active {

@@ -27,7 +27,7 @@ main {
     font-size: 34px;
     line-height: 1.3;
     text-align: left;
-    font-family: "NotoSerifSC", sans-serif;
+    font-family: 'Times New Roman', Times, serif
 }
 
 .first-entry .entry-content {
@@ -39,11 +39,8 @@ main {
 
 .first-entry .entry-content p {
     line-height: 2.5;
-    /* 行高，用于提升可读性 */
     text-align: center;
-    /* 文字内容居中对齐 */
     margin: 0;
-    /* 清除段落的默认外边距 */
     font-family: "NotoSerifSC", sans-serif;
     /* font-weight: bold; 使用粗体 */
 }

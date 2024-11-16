@@ -4,7 +4,7 @@
     --nav-width: 1024px;
     --main-width: 720px;
     --header-height: 60px;
-    --footer-height: 80px;
+    --footer-height: 81px;
     --radius: 8px;
     --theme: #F4F4FA;
     --entry: #F4F4FA;
@@ -30,9 +30,11 @@
 }
 
 .list {
+    /* transition: background 1s ease; */
     background: var(--secondary);
 }
 
 .dark.list {
+    /* transition: background 1s ease; */
     background: var(--theme);
 }
