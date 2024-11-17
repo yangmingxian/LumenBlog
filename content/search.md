@@ -4,7 +4,7 @@ layout: "search" # necessary for search
 # url: "/archive"
 # description: "Description for Search"
 summary: "search"
-placeholder: "Just like finding the candlelight in a dark room..."
+placeholder: "Finding your destination..."
 ---
 
 <!-- To hide a particular page from being searched, add it in post's frontmatter -->
