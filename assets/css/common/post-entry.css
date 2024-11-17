@@ -74,7 +74,8 @@ main {
     border-radius: var(--radius);
     transition: transform 0.1s;
     /* border: 1px solid var(--border); */
-    border-bottom: 1px dashed var(--border); /* 虚下划线 */
+    border-bottom: 1px dashed var(--border);
+    /* 虚下划线 */
 }
 
 .post-entry:active {
