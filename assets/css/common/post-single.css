@@ -99,6 +99,7 @@
 .post-content figure,
 .post-content ul {
     margin-bottom: var(--content-gap);
+    font-size: 16px;
 }
 
 .post-content ol,
