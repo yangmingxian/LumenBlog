@@ -7,7 +7,7 @@ slug = "furnace"
 indent = true
 dropCap = false
 comments = true
-summary = " "
+
 +++
 
 <!-- [^1]![1921.jpg](/images/1921.jpg) -->

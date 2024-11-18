@@ -7,7 +7,7 @@ slug = "tranquility_and_farsightedness"
 indent = true
 dropCap = false
 draft = true
-summary = " "
+
 +++
 
 <!-- [^1]![1921.jpg](/images/1921.jpg) -->

@@ -6,7 +6,7 @@ categories = ["life"]
 slug = "parasites"
 indent = true
 dropCap = false
-summary = " "
+
 +++
 
 <!-- [^1]![1921.jpg](/images/1921.jpg) -->

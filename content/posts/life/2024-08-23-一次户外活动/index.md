@@ -7,7 +7,7 @@ slug = "Record of the first outdoor activity in Shenzhen"
 # indent = true
 dropCap = false
 # draft = true
-summary = " "
+
 +++
 
 ![outdoor.jpg](outdoor_alt.jpg)

@@ -7,12 +7,11 @@ slug = "Hello Mingxian"
 indent = true
 dropCap = false
 draft = true
-summary = " "
 +++
 
 {{< music 29392943 song true >}}
 
-<!-- {{< bilibili  BV1v14y147nq  >}}  -->
+{{< bilibili  BV1v14y147nq  >}} 
 
 
 ---

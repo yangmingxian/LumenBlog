@@ -6,7 +6,7 @@ categories = ["life"]
 slug = "gaint_city"
 indent = true
 dropCap = false
-summary = " "
+
 +++
 
 

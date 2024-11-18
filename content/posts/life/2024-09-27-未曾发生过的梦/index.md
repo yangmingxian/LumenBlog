@@ -6,7 +6,7 @@ categories = ["life"]
 slug = "a_dream_that_hasnt_happened_yet"
 indent = true
 dropCap = false
-summary = " "
+
 +++
 
 
