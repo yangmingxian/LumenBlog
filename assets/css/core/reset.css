@@ -7,8 +7,9 @@
 html {
     -webkit-tap-highlight-color: transparent;
     overflow-y: scroll;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    /* 以下两个用来使用手机系统字体大小来控制网页的字体大小 */
+    /* -webkit-text-size-adjust: 100%; */
+    /* text-size-adjust: 100%; */
 }
 
 a,
