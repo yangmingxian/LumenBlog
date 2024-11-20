@@ -87,7 +87,7 @@ params:
   # defaultTheme: light
   # defaultTheme: dark
 
-  hideFooter: false # to hide default footer
+  hideFooter: false
   hideSummary : true
   # hideMeta: true
   hideAuthor: true
@@ -108,21 +108,21 @@ params:
   ShowPageNums: true
   ShowToc: false
 
-  comments: true
-  giscus:
-    repo: "yangmingxian/yangmingxian.github.io"
-    repoID: "R_kgDOMiFMSw"
-    category: "Announcements"
-    categoryID: "DIC_kwDOMiFMS84Ch_YI"
-    mapping: "pathname"
-    inputPosition: "top"
-    strict: "0"
-    reactionsEnabled: "1"
-    emitMetadata : "0"
-    lang : "en"
+  comments: false
+  # giscus:
+  #   repo: "yangmingxian/yangmingxian.github.io"
+  #   repoID: "R_kgDOMiFMSw"
+  #   category: "Announcements"
+  #   categoryID: "DIC_kwDOMiFMS84Ch_YI"
+  #   mapping: "pathname"
+  #   inputPosition: "top"
+  #   strict: "0"
+  #   reactionsEnabled: "1"
+  #   emitMetadata : "0"
+  #   lang : "en"
 
 
-  images: ["images/papermod-cover.png"]
+  images: ["static/images/papermod-cover.png"]
 
   profileMode:
     enabled: false
