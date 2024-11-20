@@ -88,4 +88,7 @@ dropCap = false
    那么你有没有想过，它们的意义是什么？
    <div style="text-align:right"> ——Mingxian </div>
 
+   不要被过去困住，即使过去再美好，现在再困苦。你眼里的光是一定是未来的你赋予的，不是被过去你夺走的。
+   <div style="text-align:right"> ——Mingxian </div>
+
    ... ...
