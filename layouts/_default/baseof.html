@@ -3,20 +3,24 @@
 {{- end -}}
 
 <!DOCTYPE html>
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default " auto" }}">
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
 
 <head>
     {{- partial "head.html" . }}
 </head>
 
+<!-- 注意这这里不能缩编整理格式，会导致id="top"里面有空格 影响到返回顶部的按钮 -->
 <body class="
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
-{{- print " list" -}} {{- end -}} {{- if eq site.Params.defaultTheme `dark` -}} {{- print " dark" }} {{- end -}} " id="
-    top">
+{{- print "list" -}}
+{{- end -}}
+{{- if eq site.Params.defaultTheme `dark` -}}
+{{- print " dark" }}
+{{- end -}}
+" id="top">
     {{- partialCached "header.html" . .Page -}}
     <main class="main">
-        {{- block "main" . }}
-        {{ end }}
+        {{- block "main" . }}{{ end }}
     </main>
     {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
 </body>
