@@ -87,7 +87,7 @@ params:
   # defaultTheme: light
   # defaultTheme: dark
 
-  hideFooter: true # to hide default footer
+  hideFooter: false # to hide default footer
   hideSummary : true
   # hideMeta: true
   hideAuthor: true
@@ -158,7 +158,7 @@ params:
       url: "https://ko-fi.com/yangmingxin"
 
   editPost:
-    URL: "https://github.com/yangmingxin.github.io/content"
+    URL: "https://github.com/yangmingxian/LumenBlog/edit/master/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
