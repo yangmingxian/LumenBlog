@@ -76,6 +76,10 @@
     font-size: 12px;
 }
 
+.post-content p {
+    text-align: justify;
+}
+
 .post-content a,
 .toc a:hover {
     box-shadow: 0 1px 0;
