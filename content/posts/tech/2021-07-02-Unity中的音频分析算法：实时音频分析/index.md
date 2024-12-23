@@ -15,11 +15,11 @@ dropCap = false
 ## 本系列文章
 
 
-[**Unity中的音频分析算法：介绍**](/tech/beat_tracking_in_unity_introduction)
+[**Unity中的音频分析算法：介绍**](/posts/tech/beat_tracking_in_unity_introduction)
 
-[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
+[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
 
-[**Unity中的音频分析算法：预处理音频分析**](/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)
+[**Unity中的音频分析算法：预处理音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)
 
 <!-- [演示视频链接：https://www.bilibili.com/video/BV1zY4y1h7DL/](https://www.bilibili.com/video/BV1zY4y1h7DL/) -->
 
@@ -228,7 +228,7 @@ void Update()
 
 ![GetSpectrumData](result.png)
 
-每个绿点都是 rectified spectral flux 样本。可以看到一直到绿线都有绿点，绿线代表音轨中的当前播放时间。蓝点是该时间点的阈值。由于计算平均值所需的样本时间范围，我们只能生成比实时晚几个样本的阈值。红点是我们的峰值。由于我们在这里分析的是整个频谱，歌曲中存在其他的干扰因素影响到了特定频率的强度，因此一些频率的节拍并不总是在我们绘图的 y 轴上的同一个位置（rectified spectral flux 的值），相同频率的节拍有可能画出的点的y轴会有区别。    
+~~每个绿点都是 rectified spectral flux 样本。可以看到一直到绿线都有绿点，绿线代表音轨中的当前播放时间。蓝点是该时间点的阈值。由于计算平均值所需的样本时间范围，我们只能生成比实时晚几个样本的阈值。红点是我们的峰值。~~ **(图片更新引起了过时内容)** 由于我们在这里分析的是整个频谱，歌曲中存在其他的干扰因素影响到了特定频率的强度，因此一些频率的节拍并不总是在我们绘图的 y 轴上的同一个位置（rectified spectral flux 的值），相同频率的节拍有可能画出的点的y轴会有区别。    
 
 峰值是我们最看重的因素，它代表了音频中发生了主要的节拍。我们可以根据这个做音乐的可视化，做音游的自动曲谱生成等项目……不过这个算法还存在着一些制约，比如它并不真的是实时的，有一些妥协的办法，例如我上面说的在 Unity 中先处理音频，然后在一定延迟后播放相同的音乐；或者在第一次播放歌曲时存储节拍并缓存结果以备后用。  
 
@@ -236,4 +236,4 @@ void Update()
 
 我将会在下一篇文章讲解到底如何进行预处理操作。那时候我们还会对检测算法做一些别的方面的改进。
 
-下一篇文章：[**Unity中的音频分析算法：预处理音频分析**]({% post_url 2022-03-21-Unity中的音频分析算法：预处理音频分析 %})
+下一篇文章：[**Unity中的音频分析算法：预处理音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)

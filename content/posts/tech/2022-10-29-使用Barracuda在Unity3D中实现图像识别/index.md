@@ -16,7 +16,10 @@ dropCap = false
 ![识别结果截图](image_recognition_result.png)
 
 ---
-> (已过时，待更新) 在这个Unity 教程中，我将介绍使用 Barracuda 在 Unity3D 中运行机器学习模型。这允许您在 Unity 视频游戏引擎中以 onnx 的格式运行大多数的机器学习模型，以便在 Android 或 iOS 上提供跨平台支持。这个教程是我在学习过程中的学习分享，不会涉及到机器学习的内容以及集成Unity3D过程中很深的内容，很适合新手作为一个学习参考。
+> **(已过时) 可以查看一个更为泛用的新教程（性能更强，实时检测，支持yolo模型热插拔）:**  
+> [**Unity中实现Yolo的实时目标检测**](/posts/tech/implementing-real-time-object-detection-with-yolo-in-unity/)    
+
+> 在这个Unity 教程中，我将介绍使用 Barracuda 在 Unity3D 中运行机器学习模型。这允许您在 Unity 视频游戏引擎中以 onnx 的格式运行大多数的机器学习模型，以便在 Android 或 iOS 上提供跨平台支持。这个教程是我在学习过程中的学习分享，不会涉及到机器学习的内容以及集成Unity3D过程中很深的内容，很适合新手作为一个学习参考。
 
 ## 前言
 最近我暂时搁置了我正在独立开发的游戏，因为我想让自己的独立作品包含一些新鲜玩意。我一直尝试在Unity3D中集成一个节奏识别的深度学习网络，我参考并且尝试了一些解决方案，但是都不能达到一个类似于Conda的环境支持。当然，开发环境中运行深度学习已不是什么新鲜事了，但是在runtime中运行任意一个深度学习网络，在玩家游玩的过程中使用各式各样的机器学习模型才是我所追求的。  
@@ -232,8 +235,7 @@ void OnCompleteReadback(AsyncGPUReadbackRequest request)
 
 
 ## Others
-- [**作者博客：YMX's Site**](https://yangmingxian.com/)
-- [**作者B站视频：CyberStreamer**](https://space.bilibili.com/22212765)
+- [**作者B站视频：CyberStreamer**](https://www.bilibili.com/opus/723179506788990985)
 
 
 

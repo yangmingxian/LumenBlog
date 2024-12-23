@@ -100,7 +100,6 @@ AssetBundle 可用于可下载内容（DLC），减小初始安装大小，加�
 ## Ref  
 https://hybridclr.doc.code-philosophy.com/
 
- [**作者博客：YMX's Site**](https://yangmingxian.com)  
  [**作者B站视频：CyberStreamer**](https://space.bilibili.com/22212765)
 
 

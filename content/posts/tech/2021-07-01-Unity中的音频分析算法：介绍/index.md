@@ -8,18 +8,18 @@ indent = false
 dropCap = false
 +++
 
-[^1]![FT.jpg](/images/2021/beat_tracking_ft.png)
+![FT.jpg](FT.png)
 
 > 音乐游戏中大量的节拍需要大量的人力和时间成本，那么为什么不用代码分析节奏然后自动生成呢？Audiosurf的的创造者Dylan Fitterer开创了使用代码生成音游谱面的先河，并且取得了不错的成果。节拍映射成为了音乐游戏发展的一个重要方向。
 
 
 ## 本系列文章
 
-[**Unity中的音频分析算法：介绍**](/tech/beat_tracking_in_unity_introduction)
+[**Unity中的音频分析算法：介绍**](/posts/tech/beat_tracking_in_unity_introduction/)
 
-[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
+[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
 
-[**Unity中的音频分析算法：预处理音频分析**](/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)
+[**Unity中的音频分析算法：预处理音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)
 
 <!-- [演示视频链接：https://www.bilibili.com/video/BV1zY4y1h7DL/](https://www.bilibili.com/video/BV1zY4y1h7DL/) -->
 
@@ -37,9 +37,6 @@ dropCap = false
 
 准备好了吗？让我们开始吧
 
-下一篇文章：[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**]({% post_url 2021-07-02-Unity中的音频分析算法：使用 Unity API 进行实时音频分析 %})
+下一篇文章：[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
 
 
----
-
-[^1]: 截图自 https://www.youtube.com/watch?v=fdM7KtLqcPE

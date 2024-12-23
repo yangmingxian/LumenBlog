@@ -14,11 +14,11 @@ dropCap = false
 
 ## 本系列文章
 
-[**Unity中的音频分析算法：介绍**](/tech/beat_tracking_in_unity_introduction)
+[**Unity中的音频分析算法：介绍**](/posts/tech/beat_tracking_in_unity_introduction)
 
-[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
+[**Unity中的音频分析算法：使用 Unity API 进行实时音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-real-time-audio-analysis/)
 
-[**Unity中的音频分析算法：预处理音频分析**](/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)
+[**Unity中的音频分析算法：预处理音频分析**](/posts/tech/audio-analysis-algorithms-in-unity-preprocessing-audio-analysis)
 
 <!-- [演示视频链接：https://www.bilibili.com/video/BV1zY4y1h7DL/](https://www.bilibili.com/video/BV1zY4y1h7DL/) -->
 

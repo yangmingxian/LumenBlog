@@ -34,9 +34,7 @@ dropCap = false
 
 [**项目地址：** https://github.com/yangmingxian/SpriteUnpacker](https://github.com/yangmingxian/SpriteUnpacker)
 
-
- [**作者博客：YMX's Site**](https://yangmingxian.com)  
- [**作者B站：CyberStreamer**](https://space.bilibili.com/22212765)
+[**作者B站：CyberStreamer**](https://space.bilibili.com/22212765)
 
 希望项目能给其他开发者节省开发时间
 Have fun~

@@ -68,16 +68,10 @@ dropCap = false
 
 当我决定打造一个‘公平Roguelike’游戏的时候，并没有预测到会做成《节奏地牢》现在这个样，而且当我决定加入节奏游戏玩法的时候，也没有想到最终去掉了对韵律感的要求。但我对于最终做出来的游戏感到高兴，我认为自己尝试玩很多游戏是调整优化的关键因素，保持开放的设计思路是完成最初意想不到结果的原因。
 
-## Outro
-
-
-
 
 ## Ref  
 
-
- [**作者博客：YMX's Site**](https://yangmingxian.com/)  
- [**作者B站视频：CyberStreamer**](https://space.bilibili.com/22212765)
+[**作者B站视频：CyberStreamer**](https://space.bilibili.com/22212765)
 
 
 
