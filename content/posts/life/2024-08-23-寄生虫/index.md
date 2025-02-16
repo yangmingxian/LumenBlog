@@ -1,7 +1,7 @@
 +++
 title = "寄生虫"
 date = "2024-08-23 20:30:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "parasites"
 indent = true

@@ -1,7 +1,7 @@
 +++
 title = "未曾发生过的梦"
 date = "2024-09-27 16:10:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "a_dream_that_hasnt_happened_yet"
 indent = true

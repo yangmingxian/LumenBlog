@@ -1,7 +1,7 @@
 +++
 title = "熔炉"
 date = "2024-08-21 21:02:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "furnace"
 indent = true

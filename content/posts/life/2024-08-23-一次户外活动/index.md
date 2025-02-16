@@ -1,7 +1,7 @@
 +++
 title = "一次户外活动"
 date = "2024-09-02 16:10:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "Record of the first outdoor activity in Shenzhen"
 # indent = true

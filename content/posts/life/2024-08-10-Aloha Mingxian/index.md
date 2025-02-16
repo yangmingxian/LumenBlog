@@ -1,7 +1,7 @@
 +++
 title = "Aloha Mingxian"
 date = "2024-08-10 17:50:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "Hello Mingxian"
 indent = true

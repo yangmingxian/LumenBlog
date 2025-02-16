@@ -1,7 +1,7 @@
 +++
 title = "宁静与致远"
 date = "2024-09-02 16:10:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "tranquility_and_farsightedness"
 indent = true

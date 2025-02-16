@@ -1,7 +1,7 @@
 +++
 title = "大都会"
 date = "2024-09-02 16:10:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "gaint_city"
 indent = true

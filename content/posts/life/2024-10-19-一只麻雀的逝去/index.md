@@ -1,7 +1,7 @@
 +++
 title = "一只麻雀的逝去"
 date = "2024-10-19 16:10:00 +0800"
-tags = ["aphorism"]
+tags = ["Essay"]
 categories = ["life"]
 slug = "the_death_of_a_sparrow"
 indent = true
