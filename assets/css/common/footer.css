@@ -5,10 +5,14 @@
 
 .footer {
     flex-shrink: 0;
-    margin: 0px;
+    padding: 0px;
+    margin: 0px auto;
     text-align: left;
     line-height: 24px;
     color: var(--primary);
+
+    max-width: calc(var(--main-width) + var(--gap) * 2); /* 和 main 一样宽 */
+    width: 100%;                        /* 保持块撑满父容器 */
 }
 
 .footer span {
@@ -32,6 +36,9 @@
 .footer-line {
 
     width: 15%;
+    max-width: 180px;
+    min-width: 80px;
+
     /* 设置横线宽度，80% 可根据需求调整 */
     /* border: none; */
     /* 定义横线的粗细和颜色 */

@@ -1,8 +1,12 @@
 .main {
     flex: 1;
     /* 自动撑满中间区域 */
-    margin: 0;
+    margin: var(--gap) auto;
     padding: var(--gap);
+    max-width: calc(var(--main-width) + var(--gap) * 2);
+    /* min-width: var(--main-width); */
+    /* width: var(--main-width); */
+    width: 100%;         
 }
 
 /* 在较小的屏幕上 */
