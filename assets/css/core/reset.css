@@ -4,6 +4,25 @@
     box-sizing: border-box;
 }
 
+/* 让 padding 不增加元素高度 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    /* 必须，让 body 高度撑满浏览器 */
+    margin: 0;
+    /* 去掉默认间距 */
+    display: flex;
+    /* 启用 flex */
+    flex-direction: column;
+    /* 纵向排列 nav → main → footer */
+}
+
 html {
     -webkit-tap-highlight-color: transparent;
     overflow-y: scroll;

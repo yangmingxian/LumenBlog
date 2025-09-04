@@ -1,17 +1,19 @@
 .main {
-    position: relative;
-    min-height: calc(100dvh - var(--header-height) - var(--footer-height));
-    max-width: calc(var(--main-width) + var(--gap) * 2);
-    margin: auto;
+    flex: 1;
+    /* 自动撑满中间区域 */
+    margin: 0;
     padding: var(--gap);
 }
 
 /* 在较小的屏幕上 */
-@media (max-width: 438px) {
+/* @media (max-width: 438px) {
     .main {
-        min-height: calc(100dvh - 2*var(--header-height) - var(--footer-height));
+        max-width: calc(var(--main-width) + var(--gap) * 2);
+        margin: auto;
+        padding: var(--gap);
+        flex: 1;
     }
-}
+} */
 
 .page-header h1 {
     font-size: 30px;
