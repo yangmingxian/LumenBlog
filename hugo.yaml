@@ -3,7 +3,9 @@
 baseURL: "https://yangmingxian.com/"
 title: Lumen
 # copyright: "2015–2024 By Mingxian"
-paginate: 20
+pagination:
+  pagerSize: 20
+  
 theme: [PaperMod]
 
 enableInlineShortcodes: true
@@ -91,7 +93,7 @@ params:
 
   hideFooter: false
   hideSummary: true
-  # hideMeta: true
+  # hideMeta: false
   hideAuthor: true
 
   # disableScrollToTop: true
@@ -228,5 +230,5 @@ markup:
 services:
   instagram:
     disableInlineCSS: true
-  twitter:
+  x:
     disableInlineCSS: true
