@@ -5,7 +5,7 @@ title: Lumen
 # copyright: "2015–2024 By Mingxian"
 pagination:
   pagerSize: 20
-  
+
 theme: [PaperMod]
 
 enableInlineShortcodes: true
@@ -72,7 +72,7 @@ languages:
   #   params:
   #     languageAltTitle: Chinese
 
-# PaperMod uses Fuse.js Basic for search functionality
+# PaperMod 使用 Fuse.js Basic 进行搜索功能
 outputs:
   home:
     - HTML

@@ -41,7 +41,7 @@ main {
     line-height: 2.5;
     text-align: center;
     margin: 0;
-    font-family: "NotoSerifSC", sans-serif;
+    /* font-family: "NotoSerifSC", sans-serif; */
     /* font-weight: bold; 使用粗体 */
 }
 
