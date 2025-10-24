@@ -5,7 +5,7 @@ tags = ["Game Design", "technology"]
 categories = ["technology"]
 slug = "Toon Water Shader in Unity"
 indent = false
-draft = true
+# draft = true
 # dropCap = false
 # katex = true
 +++
@@ -39,9 +39,9 @@ _DepthMaxDistance("Depth Maximum Distance", Float) = 1                          
 
 *请注意，这些属性已经填充了一些默认值。*   
 
-我们用两种颜色定义渐变，一种代表水最浅时的颜色（它后面的物体几乎接触到水面时），另一种代表水最深时的颜色。由于水深可能无限大，我们添加了`_DepthMaxDistance`属性作为渐变的截止值——任何比这更深的水都不会再改变颜色而直接使用`_DepthGradientDeep`定义的深水颜色。
+我们用两种颜色定义渐变，一种代表水最浅时的颜色（它后面的物体几乎接触到水面时），另一种代表水最深时的颜色。由于水深可能无限大，我们添加了`_DepthMaxDistance`属性作为渐变的截止值——任何比这更深的水都不会再改变颜色而直接使用`_DepthGradientDeep`定义的深水颜色，这相当于一个Clamp函数。
 
-我们还需要声明这些参数，在片段着色器之前加入代码：
+在片段着色器之前加入代码以声明这些参数：
 ~~~HLSL
 float4 _DepthGradientShallow;
 float4 _DepthGradientDeep;
@@ -96,7 +96,7 @@ float depthDifference = existingDepthLinear - i.screenPosition.w;
 return depthDifference;
 ~~~
 
-为了计算水的颜色，我们将使用 `lerp` 函数，该函数接受两个值（在本例中为两个渐变颜色），并基于 0 到 1 范围内的第三个值在这两个值之间进行插值。目前，我们拥有的是世界单位的深度——但我们想知道的是，它与最大深度相比，百分比是多少。我们可以通过将depthDifference除以最大深度来计算这个值。将以下代码插入到声明`depthDifference`的行下方
+为了计算水的颜色，我们将使用 `lerp` 函数，该函数接受两个值（在本例中为两个渐变颜色），并基于 0 到 1 范围内的第三个值在这两个值之间进行插值。目前，我们拥有的是世界坐标的深度——但我们想知道的是，它与最大深度相比，百分比是多少。我们可以通过将`depthDifference`除以最大深度来计算这个值。代码如下，将其插入到声明`depthDifference`的下方。
 
 ~~~HLSL
 float waterDepthDifference01 = saturate(depthDifference / _DepthMaxDistance);
@@ -110,7 +110,7 @@ return waterColor;
 
 ## 2.波浪
 
-接下来，我们将使用噪点纹理在水面添加波浪。同时，我们将利用水深来控制波浪的可见度——这样，我们就能让波浪在浅水区清晰可见，从而营造出海岸线的效果。      
+接下来，使用噪点纹理在水面添加波浪。同时，我们将利用水深来控制波浪的可见度——这样，我们就能让波浪在浅水区清晰可见，从而营造出海岸线的效果。      
 
 <!-- ![PerlinNoise](PerlinNoise.png) -->
 <div align="center">
@@ -120,60 +120,46 @@ return waterColor;
 ### 2.1噪声
 为了简单起见，我们使用纹理引入噪声。添加以下代码来设置着色器，使其接收新的纹理属性。
 ~~~HLSL
-// As a new property in Properties.
+// 声明新的属性
 _SurfaceNoise("Surface Noise", 2D) = "white" {}
-
-…
-
-// Add in the appdata struct.
+---
+// 添加到 appdata 部分
 float4 uv : TEXCOORD0;
-
-…
-
-// Add in the v2f struct.
+---
+// 添加到 v2f 
 float2 noiseUV : TEXCOORD0;
-
-…
-
-// Above the vertex shader.
+---
+// 添加到 vertex 之前声明
 sampler2D _SurfaceNoise;
 float4 _SurfaceNoise_ST;
-
-…
-
-// Inside the vertex shader.
+---
+// 添加到 vertex 里面
 o.noiseUV = TRANSFORM_TEX(v.uv, _SurfaceNoise);
 ~~~
 
-我们在着色器中声明了一个新的纹理属性及其对应的 sampler2D 变量。紧接着在 sampler2D 变量下方声明了另一个 float4 变量——Unity 会自动将与同名纹理关联的平铺和偏移数据填充到此值中。最后，在 appdata 中声明 UV 数据，并将其通过 v2f 结构体从顶点着色器传递到片段着色器。
+我们在着色器中声明了一个新的纹理属性及其对应的 `sampler2D` 变量。紧接着在 `sampler2D` 变量下方声明了另一个 float4 变量——Unity 会自动将与同名纹理关联的平铺和偏移数据填充到此值中。最后，在 appdata 中声明 UV 数据，并将其通过 v2f 结构体从顶点着色器传递到片段着色器。
 
-在 Unity 编辑器中，将 PerlinNoise 赋值到 Surface Noise 插槽，并依照喜好设置参数。回到着色器，我们将采样噪声纹理并将其与表面颜色相结合以渲染波浪。在片段着色器的末尾添加以下内容。
+在 Unity 编辑器中，将 `PerlinNoise` 赋值到 Inspector 的 `Surface Noise`，并依照喜好设置参数。回到着色器，将采样噪声纹理并将其与表面颜色相结合以渲染波浪。在片段着色器的末尾添加以下内容。
 
 ~~~HLSL
 float surfaceNoiseSample = tex2D(_SurfaceNoise, i.noiseUV).r;
-
 return waterColor + surfaceNoiseSample;
 ~~~
 
 ![water4](water4.png)
 
 
-这有点像波浪，像几十年前的水面hhh，我们将应用一个阈值来进行二值化，超过阈值就是白色的，否则就是透明的。
+这有点像波浪，像几十年前游戏的水面hhh，我们将应用一个阈值来进行二值化，超过阈值就是白色的，否则就是透明的。
 
 ~~~HLSL
-// Add as a new property.
+// 添加一个新属性
 _SurfaceNoiseCutoff("Surface Noise Cutoff", Range(0, 1)) = 0.777
-
-…
-
-// Matching property variable.
+---
+// 对应新添加的属性
 float _SurfaceNoiseCutoff;
-
-…
-
-// Add in the fragment shader, just after sampling the noise texture.
+---
+// 添加到 fragment
 float surfaceNoise = surfaceNoiseSample > _SurfaceNoiseCutoff ? 1 : 0;
-
 return waterColor + surfaceNoise;
 ~~~
 ![water5](water5.png)
@@ -184,20 +170,15 @@ return waterColor + surfaceNoise;
 我们希望在物体和海岸线周围产生泡沫，所以这里我们根据水深调节噪声截止阈值来实现此效果。
 
 ~~~HLSL
-// Control for what depth the shoreline is visible.
+// 添加一个新属性
 _FoamDistance("Foam Distance", Float) = 0.4
-
-…
-
-// Matching variable.
+---
+// 对应新添加的属性
 float _FoamDistance;
-
-…
-
-// Add in the fragment shader, above the existing surfaceNoise declaration.
+---
+// 添加到 fragment, 放在 surfaceNoise 之前
 float foamDepthDifference01 = saturate(depthDifference / _FoamDistance);
 float surfaceNoiseCutoff = foamDepthDifference01 * _SurfaceNoiseCutoff;
-
 float surfaceNoise = surfaceNoiseSample > surfaceNoiseCutoff ? 1 : 0;
 ~~~
 
@@ -208,23 +189,19 @@ float surfaceNoise = surfaceNoiseSample > surfaceNoiseCutoff ? 1 : 0;
 
 ### 2.3泡沫动画
 
-静态水面效果并不怎么有趣——让我们给水波添加一些动感和扭曲效果，首先从动感开始。我们将通过偏移用于采样噪点纹理的UV来实现这一点。
+静态水面效果并不怎么有趣——还需要给水波添加一些流动和扭曲效果，首先从流动开始。我们将通过偏移用于采样噪点纹理的UV来实现这一点。
 ~~~HLSL
-// Property to control scroll speed, in UVs per second.
+// 控制UV滚动的属性
 _SurfaceNoiseScroll("Surface Noise Scroll Amount", Vector) = (0.03, 0.03, 0, 0)
-
-…
-
+---
 float2 _SurfaceNoiseScroll;
-
-…
-
-// Add in the fragment shader, above the existing surfaceNoiseSample line.
+---
+// 添加到 fragment, 放在 surfaceNoiseSample 之前
 float2 noiseUV = float2(i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x, i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y);
 float surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;
 ~~~
 
-现在，滚动的感觉就像一张纸在表面上被拉动一样。我们将使用扭曲纹理来增加更多动感。此扭曲纹理类似于法线贴图，只是它只有两个通道（红色和绿色），而不是三个。
+现在，滚动的感觉就像一张纸在表面上被拉动一样。我们将使用扭曲纹理来增加更多细节。此扭曲纹理类似于法线贴图，它只有两个通道（红色和绿色）。
 
 <div align="center">
   <img src="WaterDistortion.png" width="200" />
@@ -232,65 +209,53 @@ float surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;
 
 我们将这两个通道解释为二维平面上的向量，并使用它们来拉动噪声纹理的 UV。
 ~~~HLSL
-// Two channel distortion texture.
+// distortion 的两个通道的 texture 
 _SurfaceDistortion("Surface Distortion", 2D) = "white" {}	
-// Control to multiply the strength of the distortion.
+// 控制 distortion 的强度
 _SurfaceDistortionAmount("Surface Distortion Amount", Range(0, 1)) = 0.27
-
-…
-
-// Matching variables.
+---
+// 对应上面声明的属性
 sampler2D _SurfaceDistortion;
 float4 _SurfaceDistortion_ST;
-
 float _SurfaceDistortionAmount;
-
-…
-
-// New data in v2f.
+---
+// v2f
 float2 distortUV : TEXCOORD1;
-
-…
-
-// Add to the vertex shader.
+---
+// vertex 
 o.distortUV = TRANSFORM_TEX(v.uv, _SurfaceDistortion);
-
-…
-
-// Add the fragment shader, just above the current noiseUV declaration line.
+---
+// fragment
 float2 distortSample = (tex2D(_SurfaceDistortion, i.distortUV).xy * 2 - 1) * _SurfaceDistortionAmount;
-
 float2 noiseUV = float2((i.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x) + distortSample.x, (i.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y) + distortSample.y);
 ~~~
 
 
-我们声明新的纹理属性，并像往常一样添加新的 UV 集。在片段着色器中，我们对扭曲纹理进行采样——但在将其添加到 noiseUV 之前，我们将其乘以 2 并减去 1；作为纹理，x 和 y 值（分别为红色和绿色）在 0...1 范围内。然而，作为二维向量，我们希望它在 -1...1 范围内。上面的算法执行了此操作。
+我们声明新的纹理属性，并像往常一样添加新的 UV 集。在片段着色器中，我们对扭曲纹理进行采样——但在将其添加到 noiseUV 之前，我们将其乘以 2 并减去 1，这么做是为了将值限制在希望它在 [-1,1] 之间
 
 ![water7](water7.png)
 
 ## 3.泡沫修正
 
-目前，海岸线附近的泡沫看起来不错，但在漂浮物体的边缘几乎看不见。这是因为海岸和水之间的深度很小，而水和水下物体之间的深度（从相机视角来看）相对较大。将 _FoamDistance 增加到 0.4 左右可以解决这个问题，但会使海岸线变得非常大。
-
-
+目前，海岸线附近的泡沫看起来不错，但在漂浮物体的边缘几乎看不见。这是因为海岸和水之间的深度很小，而水和水下物体之间的深度（从相机视角来看）相对较大。将 _FoamDistance 增加到 0.4 左右可以解决这个问题，但会使边缘的海岸线变得非常大。
 
 
 ![water8](water8.png)
 
-相反，我们将创建一个解决方案，根据水下表面的角度来改变泡沫渲染的深度。这样，几乎垂直的表面（例如岩石）可以比非常平坦的物体（例如海岸线）渲染更深的泡沫。理想情况下，通过像这样调节泡沫量，最终图像中的泡沫在视觉上会保持一致。
+但是，我们要根据水下表面的角度来改变泡沫渲染的深度。这样，几乎垂直的表面（例如岩石）可以比非常平坦的物体（例如海岸线）渲染更深的泡沫。这样水面内部的泡沫和边缘的海岸线会有相同的范围。
 
 ### 3.1渲染法线缓冲区
 
-我们的目标是根据水面法线与其间的物体法线之间的角度来调整泡沫的深度值（着色器中的 _FoamDistance）。为此，我们需要访问法线缓冲区。
+我们的目标是根据水面法线与其间的物体法线之间的角度来调整泡沫的深度值（着色器中的 `_FoamDistance`）。为此，我们需要访问法线缓冲区。
 
 与深度缓冲区类似，这将是一个可在着色器中使用的屏幕大小的纹理。但是，它存储的不是每个像素的深度，而是法线。
 
 
-Unity 内置了使用 DepthNormals 深度纹理模式渲染法线缓冲区的功能。这会将深度缓冲区和法线缓冲区打包成一个纹理（每个缓冲区两个通道）。遗憾的是，这会导致深度缓冲区的精度不足以满足我们的需求；因此，我们需要手动将法线渲染到单独的纹理中。初始项目已包含一个用于执行此操作的 C# 脚本，NormalsReplacementShader.cs。
+Unity 内置了使用 `DepthNormals` 深度纹理模式渲染法线缓冲区的功能。这会将深度缓冲区和法线缓冲区打包成一个纹理（每个缓冲区两个通道）。遗憾的是，这会导致深度缓冲区的精度不足以满足我们的需求；因此，我们需要手动将法线渲染到单独的纹理中。初始项目已包含一个用于执行此操作的 C# 脚本，NormalsReplacementShader.cs。
 
-此脚本会创建一个与主摄像机位置和旋转相同的摄像机，但它使用替换着色器 (Replacement Shader) 渲染场景。此外，它不会将场景渲染到屏幕上，而是将输出存储到名为 _CameraNormalsTexture 的全局着色器纹理中。此纹理与我们上面使用的 _CameraDepthTexture 一样，可供所有着色器使用。
+此脚本会创建一个与主摄像机位置和旋转相同的摄像机，但它使用替换着色器 (Replacement Shader) 渲染场景。此外，它不会将场景渲染到屏幕上，而是将输出存储到名为 `_CameraNormalsTexture` 的全局着色器纹理中。此纹理与我们上面使用的 `_CameraDepthTexture` 一样，可供所有着色器使用。
 
-将此脚本应用于场景中的 Camera 对象。同时，将 HiddenNormalsTexture 着色器（位于 Shaders 文件夹中）拖到 Normals 着色器插槽中。这个着色器相当简单；它输出对象的视图空间法线。视图空间法线是对象相对于相机视图的法线。
+将此脚本应用于场景中的 Camera 对象。同时，将 `HiddenNormalsTexture` 着色器（位于 Shaders 文件夹中）拖到 Normals 着色器插槽中。这个着色器相当简单；它输出对象的视图空间法线。视图空间法线是对象相对于相机视图的法线。
 
 如果您现在运行场景，您会看到一个新的相机，即“法线相机”，作为主相机的子相机自动生成。如果您选择此对象，您可以在相机预览中看到正在渲染的法线。或者，双击相机“目标”纹理槽中的纹理以查看更大的预览。
 
@@ -302,14 +267,10 @@ Unity 内置了使用 DepthNormals 深度纹理模式渲染法线缓冲区的功
 ~~~HLSL
 // Add to appdata.
 float3 normal : NORMAL;
-
-…
-
+---
 // Add to v2f.
 float3 viewNormal : NORMAL;
-
-…
-
+---
 // Add to the vertex shader.
 o.viewNormal = COMPUTE_VIEW_NORMAL;
 ~~~
@@ -318,9 +279,7 @@ o.viewNormal = COMPUTE_VIEW_NORMAL;
 ~~~HLSL
 // As this refers to a global shader variable, it does not get declared in the Properties.
 sampler2D _CameraNormalsTexture;
-
-…
-
+---
 // Add to the fragment shader, just above the existing foamDepthDifference01 line.
 float3 existingNormal = tex2Dproj(_CameraNormalsTexture, UNITY_PROJ_COORD(i.screenPosition));
 ~~~
@@ -340,21 +299,17 @@ float3 normalDot = saturate(dot(existingNormal, i.viewNormal));
 // Replace the _FoamDistance property with the following two properties.
 _FoamMaxDistance("Foam Maximum Distance", Float) = 0.4
 _FoamMinDistance("Foam Minimum Distance", Float) = 0.04
-
-…
-
+---
 // Replace the _FoamDistance variable with the following two variables.
 float _FoamMaxDistance;
 float _FoamMinDistance;
-
-…
-
+---
 // Add to the fragment shader, above the existing foamDepthDifference01 line.
 float foamDistance = lerp(_FoamMaxDistance, _FoamMinDistance, normalDot);
 float foamDepthDifference01 = saturate(depthDifference / foamDistance);
 ~~~
 
-通过饱和点积结果，我们得到了 0...1 范围内的值，从而可以轻松传递到 lerp 函数，就像我们插入水的颜色一样。
+通过饱和点积结果，我们得到了 [0,1] 范围内的值，从而可以轻松传递到 lerp 函数，就像我们插入水的颜色一样。
 
 
 
@@ -390,20 +345,16 @@ ZWrite Off
 
 ~~~
 _FoamColor("Foam Color", Color) = (1,1,1,1)
-
-…
-
+---
 float4 _FoamColor;
-
-…
-
+---
 // Add inside the fragment shader, just below the line declaring surfaceNoise.
 float4 surfaceNoiseColor = _FoamColor * surfaceNoise;
 
 return waterColor + surfaceNoiseColor;
 ~~~
 
-这允许我们修改泡沫的颜色，但如果你在场景中使用 _FoamColor 变量，你会发现它会产生混合效果。红色泡沫变成了粉红色，而全黑泡沫只会在原处留下浅蓝色的高光。这是因为我们对用于生成最终值的两种颜色进行了加法混合。
+这允许我们修改泡沫的颜色，但如果你在场景中使用 `_FoamColor` 变量，你会发现它会产生混合效果。红色泡沫变成了粉红色，而全黑泡沫只会在原处留下浅蓝色的高光。这是因为我们对用于生成最终值的两种颜色进行了加法混合。
 
 ![water12](water12.png)
 
@@ -417,7 +368,7 @@ Blend SrcAlpha OneMinusSrcAlpha
 
 
 
-Blend 函数在提供两个参数时，其工作原理是：将着色器的输出乘以第一个值（SrcAlpha，即着色器输出的 Alpha 值），将屏幕颜色乘以第二个值（OneMinusSrcAlpha，即 1 - 输出的 Alpha 值），然后将两者相加得到最终颜色。Unity 的这篇文章对此进行了更详细的解释。
+Blend 函数在提供两个参数时，其工作原理是：将着色器的输出乘以第一个值（`SrcAlpha`，即着色器输出的 Alpha 值），将屏幕颜色乘以第二个值（`OneMinusSrcAlpha`，即 1 - 输出的 Alpha 值），然后将两者相加得到最终颜色。Unity 的这篇文章对此进行了更详细的解释。
 
 我们将在 CGPROGRAM 中将其复制为一个函数。在 appdata 声明上方添加以下内容。
 ~~~
@@ -466,13 +417,11 @@ Smoothstep 与 lerp 有点类似。它接受三个值：一个下限、一个上
 ~~~
 // Insert just after the CGPROGRAM begins.
 #define SMOOTHSTEP_AA 0.01
-
-…
-
+---
 float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample);
 ~~~
 
-我们定义的上下限（函数的前两个参数）非常接近——它们之间的距离刚好足够为边缘添加一些平滑度。当 surfaceNoiseSample 超出这些界限时，它会像之前一样返回 0 或 1。
+我们定义的上下限（函数的前两个参数）非常接近——它们之间的距离刚好足够为边缘添加一些平滑度。当 `surfaceNoiseSample` 超出这些界限时，它会像之前一样返回 0 或 1。
 
 ## 7.结尾
 
