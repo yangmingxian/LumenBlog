@@ -1,6 +1,6 @@
 +++
 title = "Unity中的BeatTracking算法"
-date = "2026-07-05- 17:28:00 +0800"
+date = "2026-07-05 17:28:00 +0800"
 tags = ["Game Design", "technology"]
 categories = ["technology"]
 slug = "Beat tracking algorithm in Unity"
