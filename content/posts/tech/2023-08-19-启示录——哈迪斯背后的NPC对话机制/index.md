@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Revelation: The NPC dialogue mechanism behind Hades"
 indent = false
 dropCap = false
-# katex = true
+
 +++
  ![哈迪斯的对话机制](hades_ft.jpg)
 

@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Game Development Basics Computer Basics"
 # indent = false
 # dropCap = false
-# katex = false
+
 +++
 
 

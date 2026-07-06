@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Character Controller and IK Animation"
 indent = false
 dropCap = false
-# katex = true
+
 +++
 
 > 我最近在家里闭门造车，想自己尝试一下以前想尝试的新想法，所以在我最近正在做的Demo里面尝试了一下使用IK和Raycast的角色控制器，效果不错。我觉得这个的实现属于通用性很强的角色控制器的解决方案，所以先分享出来一部分。

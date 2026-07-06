@@ -7,7 +7,7 @@ slug = "Beat tracking algorithm in Unity"
 indent = false
 # draft = true
 # dropCap = false
-# katex = true
+math = true
 +++
 
 
@@ -104,7 +104,7 @@ if (minDiff <= tolerance) {
 为什么整数 BPM 无法作为刚性骨架？
 假设一首歌的真实 BPM 是 128.01。如果我们使用整数 `128` 来生成理论网格：
 * 单拍误差为：
-  $$\Delta T = \frac{60}{128} - \frac{60}{128.01} \approx 0.46875 - 0.46871 = 0.00004 \text{ 秒}$$
+  $$\Delta T = \frac{60}{128} - \frac{60}{128.01} \approx  0.00004 \text{ 秒}$$
 * 看似微乎其微。但当歌曲播放到第 150 拍（约 1 分多钟）时，由于是完全等距刚性累加，累计误差将达到：
   $$150 \times 0.00004 = 0.006 \text{ 秒}$$
 * 此时若加上鼓手演奏微弱的延迟或混音延迟，误差极易突破容差窗口，迫使对齐算法判定为“冲突（Case C）”，从而全部走退落补正，失去了微调卡点（Case A）的意义。

@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Efficient image generation model based on resolution scaling"
 indent = false
 dropCap = false
-# katex = true
+
 math = true
 +++
 

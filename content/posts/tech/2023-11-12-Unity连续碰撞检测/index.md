@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Unity continuous collision detection"
 # indent = false
 # dropCap = false
-# katex = true
+
 +++
 
 

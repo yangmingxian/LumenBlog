@@ -7,7 +7,7 @@ slug = "Toon Water Shader in Unity"
 indent = false
 # draft = true
 # dropCap = false
-# katex = true
+
 +++
 
 ![cover](cover.gif)

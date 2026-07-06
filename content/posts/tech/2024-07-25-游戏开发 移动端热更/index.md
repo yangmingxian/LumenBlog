@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Game Development Mobile Hot Update"
 indent = false
 dropCap = false
-# katex = true
+
 +++
 
 >  独立开发的时候有很长一段时间都在前面游戏玩法的设计，能撑到想要上线，并且需要热更维护的开发者少之又少。如何优雅的解决热更新问题似乎是一种甜蜜的烦恼。

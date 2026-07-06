@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Revelation - Overwatch's ECS framework and network synchronization"
 indent = false
 dropCap = false
-# katex = true
+
 +++
 
 

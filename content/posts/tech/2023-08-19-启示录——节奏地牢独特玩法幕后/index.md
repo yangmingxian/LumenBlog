@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Revelation: How Crypt of the NecroDancer creates a unique gameplay"
 indent = false
 dropCap = false
-# katex = true
+
 +++
 
  ![节奏地牢FT](dancer_ft.jpg)

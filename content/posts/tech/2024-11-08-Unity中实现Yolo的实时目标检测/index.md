@@ -6,7 +6,6 @@ categories = ["technology"]
 slug = "Implementing real-time object detection with Yolo in Unity"
 indent = false
 dropCap = false
-katex = true
 +++
 
 

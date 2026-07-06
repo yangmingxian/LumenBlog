@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Game Development Basics Graphics Basics"
 # indent = false
 # dropCap = false
-# katex = false
+
 +++
 
 > 图形学知识是基础，即便你在使用的游戏引擎已经帮你完成了大多数工作，但是这些基础的概念有助于你对渲染的过程有更好的理解，才会知其所以然。所以趁着复习的机会在这里整理一些必要的知识基础。   

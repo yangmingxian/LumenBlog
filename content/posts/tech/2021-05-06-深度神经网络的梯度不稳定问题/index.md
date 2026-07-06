@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "gradient_instability_problem_of_deep_neural_network"
 indent = false
 dropCap = false
-# katex = true
+#  = true
 math = true
 +++
 

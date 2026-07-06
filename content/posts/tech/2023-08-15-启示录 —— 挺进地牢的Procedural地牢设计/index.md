@@ -6,7 +6,7 @@ categories = ["technology"]
 slug = "Revelation - Procedural dungeon generation design"
 indent = false
 dropCap = false
-# katex = true
+
 +++
 
 
