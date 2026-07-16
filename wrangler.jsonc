@@ -1,9 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "lumenblog", // 替换为你刚才在 Cloudflare 设置的项目名称
-  "compatibility_date": "2026-03-29", // 填写当前的日期（格式：YYYY-MM-DD）
+  "name": "lumenblog",
+  "compatibility_date": "2026-07-16",
+  "observability": {
+    "enabled": true
+  },
   "assets": {
-    "directory": "./public", // Hugo 默认生成的静态文件夹
-    "not_found_handling": "404-page" // 找不到路径时自动定位到 404 页面
-  }
+    "directory": "public"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
 }
