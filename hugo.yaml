@@ -199,6 +199,16 @@ params:
 
 markup:
   goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ['\[', '\]']
+            - ['$$', '$$']  # 块级公式依然使用标准的 $$
+          inline:
+            - ['\(', '\)']  # 行内公式只用 \(...\)，从而避免与美元符号 $ 冲突
+
     renderer:
       unsafe: true
   highlight:

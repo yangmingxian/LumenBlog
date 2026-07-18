@@ -1,0 +1,9 @@
+<!-- 块级公式钩子 渲染数学公式 -->
+{{- $opts := dict "output" "htmlAndMathml" "displayMode" false -}}
+{{- with try (transform.ToMath .Inner $opts) -}}
+  {{- with .Err -}}
+    {{- errorf "数学公式渲染失败: %s 位于 %s" . $.Position -}}
+  {{- else -}}
+    {{- .Value -}}
+  {{- end -}}
+{{- end -}}

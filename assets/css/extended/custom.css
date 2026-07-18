@@ -404,17 +404,52 @@ svg,
     padding: 0px 10px;
 }
 
-.pin-badge {
+/* draft和pin */
+.pin-badge,
+.entry-hint {
     display: inline-block;
-    
-    font-size: 0.8em;        
+
+    font-size: 0.8em;
     font-weight: 600;
     line-height: 1;
 
 
-    color: var(--secondary);            /* 深色字体 */
+    color: var(--secondary);
+    /* 深色字体 */
 
     vertical-align: middle;
-    margin-left: 3px;      /* 如果标签在最左侧 */
+    margin-left: 3px;
+    /* 如果标签在最左侧 */
 
+}
+
+/* 解决移动端长数学公式撑破页面的问题 */
+.katex-display {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    /* 核心：超出宽度时，公式内部支持横向滚动 */
+    overflow-y: hidden;
+    /* 隐藏纵向滚动条 */
+    -webkit-overflow-scrolling: touch;
+    /* 优化 iOS 设备的滑动流畅度 */
+    padding-bottom: 8px;
+    /* ⚠️ 重要：给滚动条留出空间，避免遮挡公式底部的下标（如 \sum_{i=1}） */
+}
+
+/* 优雅地微调公式滚动条（避免默认滚动条过粗影响美观） */
+.katex-display::-webkit-scrollbar {
+    height: 4px;
+    /* 滚动条高度 */
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    /* 浅灰色半透明滚动条 */
+    border-radius: 4px;
+}
+
+/* 如果您的网站支持深色模式，可以微调滚动条在深色模式下的颜色 */
+.dark .katex-display::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
 }
