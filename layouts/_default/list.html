@@ -42,7 +42,7 @@
 
 {{- if .IsHome }}
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $pages = where $pages "Params.hiddenInHomeList" "==" "true"  }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "==" "true" }}
 {{- end }}
 
 {{- $paginator := .Paginate $pages }}
@@ -69,6 +69,9 @@
   <header class="entry-header">
     <h2 class="entry-hint-parent">
       {{- .Title }}
+      {{- if .Params.pin -}}
+      <span class="pin-badge">[Pin]</span> <!-- 您可以自由填写 [Pin]、[置顶]、[PINED] 或 ★ -->
+      {{- end -}}
       {{- if .Draft }}
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">

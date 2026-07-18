@@ -7,7 +7,8 @@ slug = "besides_abyss"
 indent = false
 dropCap = false
 # draft = true
-
+weight = 1  
+pin= true  # 菜单项的权重，越小越靠前
 +++
 
 > <div style="text-align: center; font-size: 16px">渊前如临唯心渡，遗恨萦怀岁月深。 </div>    

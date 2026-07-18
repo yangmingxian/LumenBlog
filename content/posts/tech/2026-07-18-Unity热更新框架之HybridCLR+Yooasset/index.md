@@ -7,7 +7,7 @@ slug = "HybridCLR + Yooasset: A Hot-Update Framework for Unity Mobile"
 math = true
 +++
 
-# Unity 移动端热更新架构设计：HybridCLR + YooAsset 流程闭环与全自动引用计数实践
+## Unity 移动端热更新架构设计：HybridCLR + YooAsset 流程闭环与全自动引用计数实践
 
 在 Unity 移动端项目开发中，**代码热更新（HybridCLR）** 与 **资源生命周期管理（YooAsset）** 的组合是一套常见的技术选型。但在实际的工程落地中，如何处理开机引导、断网容错、资源加载解耦及内存自动卸载，是决定系统健壮性的关键。
 
