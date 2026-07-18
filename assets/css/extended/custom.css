@@ -135,8 +135,16 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 }
 
 .menu a {
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.menu .active {
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 2px;
 }
 
 .header-nav {
@@ -329,28 +337,35 @@ svg,
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
-    --theme: rgb(255, 255, 255);
-    --entry: rgb(255, 255, 255);
-    --primary: rgb(30, 30, 30);
-    --secondary: rgb(108, 108, 108);
-    --tertiary: rgb(214, 214, 214);
-    --content: rgb(31, 31, 31);
-    --code-block-bg: rgb(28, 29, 33);
-    --code-bg: rgb(245, 245, 245);
-    --border: rgb(238, 238, 238);
+
+    /* 浅色模式 - Catppuccin Latte */
+    --theme: #eff1f5;
+    /* 优雅的粉灰背景 */
+    --entry: #ffffff;
+    --primary: #4c4f69;
+    /* 优雅的深灰蓝标题 */
+    --content: #5c5f77;
+    /* 正文 */
+    --secondary: #7c7f93;
+    --tertiary: #bcc0cc;
+    --border: #dce0e8;
+    --code-block-bg: #e6e9ef;
+    --code-bg: #ccd0da80;
     color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-    --theme: rgb(29, 30, 32);
-    --entry: rgb(46, 46, 51);
-    --primary: rgb(218, 218, 219);
-    --secondary: rgb(155, 156, 157);
-    --tertiary: rgb(65, 66, 68);
-    --content: rgb(196, 196, 197);
-    --code-block-bg: rgb(46, 46, 51);
-    --code-bg: rgb(55, 56, 62);
-    --border: rgb(51, 51, 51);
+    /* 深色模式 - 温润黑巧克力 */
+    --theme: #201e1e;
+    /* 带有暖意底色的墨黑 */
+    --entry: #2c2929;
+    --primary: #e8e3df;
+    --content: #cfc9c5;
+    --secondary: #968f8b;
+    --tertiary: #544e4e;
+    --border: #443f3f;
+    --code-block-bg: #2c2929;
+    --code-bg: #3a3535;
     color-scheme: dark;
 }
 
@@ -372,7 +387,7 @@ svg,
     position: relative;
     margin: 0.5rem 0px;
     padding: 1rem;
-    background: var(--entry);
+    background: var(--theme);
     border-radius: var(--radius);
 }
 
@@ -392,6 +407,11 @@ svg,
 .entry-hint-parent {
     display: flex;
     justify-content: flex-start;
+}
+
+.post-title{
+    margin-bottom: 10px;
+
 }
 
 
@@ -452,4 +472,86 @@ svg,
 /* 如果您的网站支持深色模式，可以微调滚动条在深色模式下的颜色 */
 .dark .katex-display::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* 
+   将 CSS 变量映射到 Hugo (Chroma) 的代码分类类名上
+   这样，当切换主题导致变量值改变时，代码颜色会瞬间且无延迟地随之切换。
+*/
+
+/* 1. 关键字（Keywords） */
+.chroma .k, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr { 
+    color: var(--code-keyword); 
+}
+
+/* 2. 字符串（Strings） */
+.chroma .s, .chroma .s1, .chroma .s2, .chroma .sb, .chroma .sc { 
+    color: var(--code-string); 
+}
+
+/* 3. 注释（Comments） */
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1 { 
+    color: var(--code-comment); 
+    font-style: italic; /* 注释使用斜体更显精致 */
+}
+
+/* 4. 数字（Numbers） */
+.chroma .m, .chroma .mi, .chroma .mf, .chroma .mo { 
+    color: var(--code-number); 
+}
+
+/* 5. 函数与方法（Functions） */
+.chroma .nf, .chroma .fm { 
+    color: var(--code-function); 
+}
+
+/* 6. 运算符与符号（Operators） */
+.chroma .o, .chroma .ow { 
+    color: var(--code-operator); 
+}
+
+:root {
+    /* ... 您原有的其他变量 ... */
+
+    /* 浅色模式代码高亮变量 (GitHub 风格) */
+    --code-keyword: #d73a49;   /* 关键字（如 if, return）：粉红 */
+    --code-string: #032f62;    /* 字符串（如 "hello"）：深蓝 */
+    --code-comment: #6a737d;   /* 注释：雅致灰 */
+    --code-number: #005cc5;    /* 数字：天蓝 */
+    --code-function: #6f42c1;  /* 函数名：罗兰紫 */
+    --code-operator: #e36209;  /* 运算符（如 +, =, &&）：橙色 */
+}
+
+:root[data-theme="dark"] {
+    /* ... 您原有的其他变量 ... */
+
+    /* 深色模式代码高亮变量 (Dracula 风格) */
+    --code-keyword: #ff79c6;   /* 关键字：霓虹粉 */
+    --code-string: #f1fa8c;    /* 字符串：淡黄 */
+    --code-comment: #6272a4;   /* 注释：灰蓝 */
+    --code-number: #bd93f9;    /* 数字：浅紫 */
+    --code-function: #50fa7b;  /* 函数名：荧光绿 */
+    --code-operator: #ff79c6;  /* 运算符：粉红 */
+}
+
+/* 所有代码的字体 */
+.post-content code {
+    padding: 0.3rem 0.3rem;
+    font-size: 0.9em;
+    line-height: 1.5;
+    background: var(--code-bg);
+    border-radius: 0.2rem;
+}
+
+/* 大代码块的字体 */
+.md-content pre code {
+    display: grid;
+    margin: auto 0;
+    padding: 10px;
+    color: var(--primary);
+    background: var(--code-block-bg) !important;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    word-break: break-all;
 }
