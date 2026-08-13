@@ -1,119 +1,143 @@
-/*
-This is just a placeholder blank stylesheet so as to support adding custom styles budled with theme's default styles
+/* ==========================================================================
+   1. 全局配置与明暗主题变量 (Global Configurations & Theme Variables)
+   ========================================================================== */
 
-Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
-*/
+:root {
+    /* 容器及布局尺寸 */
+    --gap: 24px;
+    --content-gap: 20px;
+    --nav-width: 1024px;
+    --main-width: 900px;
+    --header-height: 60px;
+    --footer-height: 60px;
+    --radius: 8px;
 
+    /* 基础配色 - Catppuccin Latte (浅色模式) */
+    --theme: rgb(239, 241, 245);
+    /* 优雅的粉灰背景 */
+    --entry: rgb(202, 210, 222);
+    /* 列表卡片底色 */
+    --primary: #4c4f69;
+    /* 标题/主要文字 (深灰蓝) */
+    --content: #5c5f77;
+    /* 正文文字 (软灰) */
+    --secondary: #7c7f93;
+    /* 辅助文字/元数据 (中灰) */
+    --tertiary: #bcc0cc;
+    /* 辅助背景/按钮 (浅灰) */
+    --border: #dce0e8;
+    /* 边框线颜色 */
+    --code-block-bg: #e6e9ef;
+    /* 多行大代码块背景色 */
+    --code-bg: #ccd0da80;
+    /* 单行代码背景色 (带透明度) */
+    color-scheme: light;
 
-/* 主页的字体渐变背景 */
-.hidden-text {
-    text-align: center;
-    transition: background-color 0.5s ease;
-    width: 230px;
-    margin: 0 auto;
-    background-color: var(--primary);
+    /* 语法高亮变量 (GitHub Light 风格) */
+    --code-keyword: #d73a49;
+    /* 关键字：粉红 */
+    --code-string: #032f62;
+    /* 字符串：深蓝 */
+    --code-comment: #6a737d;
+    /* 注释：雅致灰 */
+    --code-number: #005cc5;
+    /* 数字：天蓝 */
+    --code-function: #6f42c1;
+    /* 函数名：罗兰紫 */
+    --code-operator: #e36209;
+    /* 运算符：橙色 */
 }
 
-.hidden-text:hover {
-    transition: background-color 0.5s ease;
+:root[data-theme="dark"] {
+    /* 基础配色 - 温润黑巧克力 (深色模式) */
+    --theme: #201e1e;
+    /* 带有暖意底色的墨黑背景 */
+    --entry: #2c2929;
+    /* 列表卡片底色 */
+    --primary: #e8e3df;
+    /* 标题/主要文字 (米白色) */
+    --content: #cfc9c5;
+    /* 正文文字 (柔白) */
+    --secondary: #968f8b;
+    /* 辅助文字/元数据 (暖灰) */
+    --tertiary: #544e4e;
+    /* 辅助背景/按钮 */
+    --border: #443f3f;
+    /* 边框线颜色 */
+    --code-block-bg: #2c2929;
+    /* 多行大代码块背景色 */
+    --code-bg: #3a3535;
+    /* 单行代码背景色 */
+    color-scheme: dark;
+
+    /* 语法高亮变量 (Dracula 风格) */
+    --code-keyword: #ff79c6;
+    /* 关键字：霓虹粉 */
+    --code-string: #f1fa8c;
+    /* 字符串：淡黄 */
+    --code-comment: #6272a4;
+    /* 注释：灰蓝 */
+    --code-number: #bd93f9;
+    /* 数字：浅紫 */
+    --code-function: #50fa7b;
+    /* 函数名：荧光绿 */
+    --code-operator: #ff79c6;
+    /* 运算符：粉红 */
+}
+
+
+/* ==========================================================================
+   2. 基础重置与全局排版 (Global Resets & Typographic Base)
+   ========================================================================== */
+
+/* 全局盒模型重置，确保 Padding 不撑大元素宽高 */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow-y: auto;
+    /* 仅在内容超出屏幕时显示滚动条 */
+    -webkit-tap-highlight-color: transparent;
+    /* 消除移动端点击蓝色高亮 */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    word-break: break-word;
+    /* 防止英文长单词溢出破形 */
     background-color: var(--theme);
+    min-height: 100vh;
+    display: flex;
+    /* Flex 布局支持页脚自适应贴底 */
+    flex-direction: column;
 }
 
-.hidden-text::selection {
-    color: var(--secondary);
-    background-color: var(--primary);
-}
 
+/* ==========================================================================
+   3. 导航栏与头部布局 (Navigation & Header Layout)
+   ========================================================================== */
 
-
-/* 页脚横线 */
-.footer-line {
-
-    width: 15%;
-    max-width: 180px;
-    min-width: 80px;
-
-    /* 设置横线宽度，80% 可根据需求调整 */
-    /* border: none; */
-    /* 定义横线的粗细和颜色 */
-    margin-top: auto;
-    margin-left: 0;
-    /* 左对齐 */
-    margin-bottom: 10px;
-    /* 与下方文字分隔开 */
-    border-top: 2px solid var(--primary)
-}
-
-/* 页脚 */
-.footer {
-    font-size: 12px;
-    color: var(--secondary);
-    padding: calc((var(--footer-height) - var(--gap)) / 2) var(--gap);
-    text-align: left;
-    line-height: 24px;
-    color: var(--primary);
+/* 导航栏容器 */
+.header-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     max-width: calc(var(--nav-width) + var(--gap) * 2);
-    width: 100%;
+    margin: auto;
+    line-height: var(--header-height);
+    padding: 0;
+    column-gap: var(--gap);
 }
 
-.footer span {
-    margin-inline-start: 1px;
-    margin-inline-end: 1px;
-}
-
-.footer span:last-child {
-    white-space: nowrap;
-}
-
-.footer a {
-    color: inherit;
-    border-bottom: 1px solid var(--secondary);
-}
-
-.footer a:hover {
-    border-bottom: 1px solid var(--primary);
-}
-
-
-/* 返回顶部 */
-.top-link {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 99;
-    background: var(--tertiary);
-    width: 2rem;
-    height: 2rem;
-    transition: visibility 0.5s, opacity 0.5s linear;
-}
-
-
-/* 首页 */
-.first-entry .entry-content {
-    margin: 14px 0;
-    color: var(--main);
-}
-
-.first-entry .entry-content p {
-    line-height: 1;
-    text-align: center;
-}
-
-.line-divider {
-    background-image: repeating-linear-gradient(-45deg, transparent, transparent 8px, currentcolor 8px, currentcolor 10px);
-    padding: 0px;
-    width: 100%;
-    aspect-ratio: 15 / 1;
-    margin: 1em auto;
-    border: 0px;
-    display: block;
-    color: inherit
-}
-
-
-
-
-/* 导航栏 */
+/* 网站 Logo 区域 */
 .logo,
 .menu {
     display: flex;
@@ -129,17 +153,14 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     column-gap: 0.55rem;
 }
 
-.theme-toggle {
-    font-size: 26px;
-    padding: 0 0.4rem;
-}
-
+/* 菜单导航链接 */
 .menu a {
     font-size: 17px;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }
 
+/* 当前处于活动状态（激活）的菜单样式 */
 .menu .active {
     font-weight: bold;
     text-decoration: underline;
@@ -147,136 +168,31 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     text-decoration-thickness: 2px;
 }
 
-.header-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: calc(var(--nav-width) + var(--gap) * 2);
-    margin: auto;
-    line-height: var(--header-height);
-    padding: 0;
-    column-gap: var(--gap);
+/* 明暗主题切换按钮 */
+.theme-toggle {
+    font-size: 26px;
+    padding: 0 0.4rem;
+}
+
+/* 根据当前模式控制太阳/月亮图标的显隐 */
+[data-theme="dark"] .moon {
+    display: none;
+}
+
+[data-theme="light"] .sun {
+    display: none;
 }
 
 
-/* 统一设置标题的字重、行高和基本排版属性 */
-.md-content h1,
-.md-content h2,
-.md-content h3,
-.md-content h4,
-.md-content h5,
-.md-content h6 {
-    font-weight: 600;
-    /* 适度加粗，不建议使用 bold(700)，600 更加清爽 */
-    line-height: 1.35;
-    /* 标题的行高应比正文（1.7）更紧凑，避免折行时显得松散 */
-}
+/* ==========================================================================
+   4. 页面主体与页脚 (Main Content Layout & Footer)
+   ========================================================================== */
 
-/* 优化后的字体大小与间距 */
-
-/* h1: 通常作为文章主标题，不宜过大 */
-.md-content h1 {
-    font-size: 2.125rem;
-    /* 约 34px (原 40px) */
-    margin: 2.5rem auto 1.5rem;
-    /* 上方留白 40px，下方留白 24px，建立良好的段落层次 */
-}
-
-/* h2: 文章内的一级分段大标题 */
-.md-content h2 {
-    font-size: 1.625rem;
-    /* 约 26px (原 32px) */
-    margin: 2.25rem auto 1.125rem;
-    /* 上方 36px，下方 18px */
-}
-
-/* h3: 二级子标题 */
-.md-content h3 {
-    font-size: 1.3125rem;
-    /* 约 21px (原 24px) */
-    margin: 1.875rem 0 0.875rem;
-    /* 上方 30px，下方 14px */
-}
-
-/* h4: 三级子标题 */
-.md-content h4 {
-    font-size: 1.125rem;
-    /* 约 18px (原 16px，略大于正文) */
-    margin: 1.625rem 0 0.75rem;
-    /* 上方 26px，下方 12px */
-}
-
-/* h5: 与正文等大，但通过加粗来体现标题属性 */
-.md-content h5 {
-    font-size: 1rem;
-    /* 16px (原 14px) */
-    margin: 1.5rem 0 0.625rem;
-    /* 上方 24px，下方 10px */
-}
-
-/* h6: 辅助性微型标题（比正文略小，通过略微淡化和增加字间距来突显精致感） */
-.md-content h6 {
-    font-size: 0.875rem;
-    /* 14px (原 12px) */
-    letter-spacing: 0.05em;
-    /* 增加字间距 */
-    margin: 1.5rem 0 0.625rem;
-}
-
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    word-break: break-word;
-    background: var(--theme);
-}
-
-
-*,
-::after,
-::before {
-    box-sizing: border-box;
-}
-
-/* 让 padding 不增加元素高度 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-
-html {
-    height: 100%;
-}
-
-body {
-    min-height: 100vh;
-    /* 或者用 min-height: 100%; 确保弹性自适应 */
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-html {
-    -webkit-tap-highlight-color: transparent;
-    overflow-y: auto;
-    /* 仅在内容超出屏幕时才显示滚动条 */
-    /* 以下两个用来使用手机系统字体大小来控制网页的字体大小 */
-    /* -webkit-text-size-adjust: 100%; */
-    /* text-size-adjust: 100%; */
-}
-
-/* .page-header h1 {
-    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
-} */
-
-
+/* 主内容包裹区 */
 .main {
     position: relative;
     flex: 1;
+    /* 填充剩余空间使页脚靠底 */
     min-height: auto;
     margin: auto;
     padding: var(--gap);
@@ -284,11 +200,342 @@ html {
     width: 100%;
 }
 
+/* 文章分类页或归档页容器背景 */
+.list {
+    background-color: var(--theme);
+}
+
+/* 页脚区域 */
+.footer {
+    font-size: 12px;
+    padding: calc((var(--footer-height) - var(--gap)) / 2) var(--gap);
+    text-align: left;
+    line-height: 24px;
+    color: var(--primary);
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    width: 100%;
+}
+
+.footer span {
+    margin-inline-start: 1px;
+    margin-inline-end: 1px;
+}
+
+.footer span:last-child {
+    white-space: nowrap;
+    /* 避免版权末尾折行 */
+}
+
+.footer a {
+    color: inherit;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.footer a:hover {
+    border-bottom: 1px solid var(--primary);
+}
+
+/* 页脚上方的美化横线 */
+.footer-line {
+    width: 15%;
+    max-width: 180px;
+    min-width: 80px;
+    margin-top: auto;
+    /* 顶开与上方内容的距离 */
+    margin-left: 0;
+    /* 左对齐 */
+    margin-bottom: 10px;
+    /* 与页脚文字拉开间距 */
+    border-top: 2px solid var(--primary);
+}
 
 
-/* ==========================================
-   全局主题切换平滑渐变效果
-   ========================================== */
+/* ==========================================================================
+   5. 标题排版规范 (Markdown Heading Typography)
+   ========================================================================== */
+
+/* 统一设置正文标题的字重与行高 */
+.md-content h1,
+.md-content h2,
+.md-content h3,
+.md-content h4,
+.md-content h5,
+.md-content h6 {
+    font-weight: 600;
+    /* 适度加粗，比 700(bold) 更清爽 */
+    line-height: 1.35;
+    /* 紧凑的标题行高，避免换行时显得松散 */
+}
+
+/* H1: 文章主标题 */
+.md-content h1 {
+    font-size: 2.125rem;
+    /* 约 34px */
+    margin: 2.5rem auto 1.5rem;
+    /* 增加上方留白拉开与前文层次 */
+}
+
+/* H2: 一级分段标题 */
+.md-content h2 {
+    font-size: 1.625rem;
+    /* 约 26px */
+    margin: 2.25rem auto 1.125rem;
+}
+
+/* H3: 二级分段标题 */
+.md-content h3 {
+    font-size: 1.3125rem;
+    /* 约 21px */
+    margin: 1.875rem 0 0.875rem;
+}
+
+/* H4: 三级分段标题 */
+.md-content h4 {
+    font-size: 1.125rem;
+    /* 约 18px (略大于正文) */
+    margin: 1.625rem 0 0.75rem;
+}
+
+/* H5: 与正文等大但加粗 */
+.md-content h5 {
+    font-size: 1rem;
+    /* 16px */
+    margin: 1.5rem 0 0.625rem;
+}
+
+/* H6: 辅助性微型标题（略小，通过字间距突显高级感） */
+.md-content h6 {
+    font-size: 0.875rem;
+    /* 14px */
+    letter-spacing: 0.05em;
+    margin: 1.5rem 0 0.625rem;
+}
+
+
+/* ==========================================================================
+   6. 文章列表与卡片样式 (Post List & Entry Card Styles)
+   ========================================================================== */
+
+/* 主页/文章列表卡片 */
+.post-entry {
+    display: flex;
+    position: relative;
+    margin: 0.5rem 0px;
+    padding: 1rem;
+    background-color: transparent;
+    border-radius: var(--radius);
+}
+
+
+.entry-header {
+    flex: 1;
+}
+
+.entry-header h2 {
+    font-size: 16px;
+}
+
+.entry-hint-parent {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.post-title {
+    margin-bottom: 10px;
+}
+
+/* 卡片元数据页脚 (日期、阅读时间等) */
+.entry-footer {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: var(--secondary);
+    font-size: 13px;
+    padding: 0px 10px;
+}
+
+/* 置顶(Pin) 和 草稿(Draft) 提示小标签 */
+.pin-badge,
+.entry-hint {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--secondary);
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+
+/* ==========================================================================
+   7. 交互与特色小组件 (Interactive & Decorative Elements)
+   ========================================================================== */
+
+/* 主页文字遮罩（光标悬停时显现文字） */
+.hidden-text {
+    text-align: center;
+    transition: background-color 0.5s ease;
+    width: 230px;
+    margin: 0 auto;
+    background-color: var(--primary);
+}
+
+.hidden-text:hover,
+.hidden-text:active {
+    transition: background-color 0.5s ease;
+    background-color: var(--theme);
+}
+
+.hidden-text::selection {
+    color: var(--secondary);
+    background-color: var(--primary);
+}
+
+/* 首页第一篇文章推荐块内容 */
+.first-entry .entry-content {
+    margin: 14px 0;
+    color: var(--main);
+}
+
+.first-entry .entry-content p {
+    line-height: 1;
+    text-align: center;
+}
+
+/* 首页斜线条装饰分割线 */
+.line-divider {
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 8px, currentcolor 8px, currentcolor 10px);
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 15 / 1;
+    margin: 1em auto;
+    border: 0px;
+    display: block;
+    color: inherit;
+}
+
+/* 返回顶部悬浮链接 */
+.top-link {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 99;
+    background-color: var(--tertiary);
+    width: 2rem;
+    height: 2rem;
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+
+/* ==========================================================================
+   8. 数学公式与代码块高亮样式 (Math & Code Highlight Styles)
+   ========================================================================== */
+
+/* KaTeX 块级公式移动端自适应（支持溢出横向滚动，防撑破网页） */
+.katex-display {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* 优化 iOS 顺滑滑动 */
+    padding-bottom: 8px;
+    /* 为公式底部标留出空隙，防滚动条遮挡 */
+}
+
+/* KaTeX 滚动条微调 */
+.katex-display::-webkit-scrollbar {
+    height: 4px;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] .katex-display::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Hugo 内置代码语法高亮 (Chroma 变量映射绑定) --- */
+
+.chroma .k,
+.chroma .kd,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr {
+    color: var(--code-keyword);
+}
+
+/* 关键字 */
+.chroma .s,
+.chroma .s1,
+.chroma .s2,
+.chroma .sb,
+.chroma .sc {
+    color: var(--code-string);
+}
+
+/* 字符串 */
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1 {
+    color: var(--code-comment);
+    font-style: italic;
+}
+
+/* 注释 */
+.chroma .m,
+.chroma .mi,
+.chroma .mf,
+.chroma .mo {
+    color: var(--code-number);
+}
+
+/* 数字 */
+.chroma .nf,
+.chroma .fm {
+    color: var(--code-function);
+}
+
+/* 函数与方法 */
+.chroma .o,
+.chroma .ow {
+    color: var(--code-operator);
+}
+
+/* 运算符 */
+
+/* --- 代码字体排版与容器约束 --- */
+
+/* 1. 正文行内代码 */
+.post-content code {
+    padding: 0.3rem 0.3rem;
+    font-size: 0.9em;
+    line-height: 1.5;
+    background-color: var(--code-bg);
+    border-radius: 0.2rem;
+}
+
+/* 2. 多行大代码块 */
+.md-content pre code {
+    display: grid;
+    margin: auto 0;
+    padding: 10px;
+    color: var(--primary);
+    background-color: var(--code-block-bg) !important;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    word-break: break-all;
+}
+
+
+/* ==========================================================================
+   9. 全局过渡动画 (Smooth Global Transitions)
+   ========================================================================== */
+
+/* 极具质感、优雅平滑的明暗主题过渡效果 */
 body,
 .main,
 .header,
@@ -306,7 +553,6 @@ input,
 svg,
 #searchbox input,
 .hidden-text {
-    /* 为涉及颜色改变的属性分别设置过渡时间（0.3秒）和过渡曲线 */
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
@@ -314,244 +560,35 @@ svg,
         border-top-color 0.3s ease,
         fill 0.3s ease,
         stroke 0.3s ease,
-        box-shadow 3s ease;
+        box-shadow 0.3s ease;
 }
 
 
 
-
-[data-theme="dark"] .moon {
-    display: none;
-}
-
-[data-theme="light"] .sun {
-    display: none;
-}
-
-
-:root {
-    --gap: 24px;
-    --content-gap: 20px;
-    --nav-width: 1024px;
-    --main-width: 900px;
-    --header-height: 60px;
-    --footer-height: 60px;
-    --radius: 8px;
-
-    /* 浅色模式 - Catppuccin Latte */
-    --theme: #eff1f5;
-    /* 优雅的粉灰背景 */
-    --entry: #ffffff;
-    --primary: #4c4f69;
-    /* 优雅的深灰蓝标题 */
-    --content: #5c5f77;
-    /* 正文 */
-    --secondary: #7c7f93;
-    --tertiary: #bcc0cc;
-    --border: #dce0e8;
-    --code-block-bg: #e6e9ef;
-    --code-bg: #ccd0da80;
-    color-scheme: light;
-}
-
-:root[data-theme="dark"] {
-    /* 深色模式 - 温润黑巧克力 */
-    --theme: #201e1e;
-    /* 带有暖意底色的墨黑 */
-    --entry: #2c2929;
-    --primary: #e8e3df;
-    --content: #cfc9c5;
-    --secondary: #968f8b;
-    --tertiary: #544e4e;
-    --border: #443f3f;
-    --code-block-bg: #2c2929;
-    --code-bg: #3a3535;
-    color-scheme: dark;
-}
-
-.list {
-    transition: background 0.3s ease;
-    background: var(--theme);
-}
-
-[data-theme="dark"] .list {
-    transition: background 0.3s ease;
-    background: var(--theme);
-}
-
-
-
-
-.post-entry {
-    display: flex;
+/* Bibili Shortcode */
+.bilibili {
     position: relative;
-    margin: 0.5rem 0px;
-    padding: 1rem;
-    background: var(--theme);
-    border-radius: var(--radius);
+    /* width: 100%; */
+    /* height: 100%; */
+    padding-bottom: 56.25%;
 }
 
-.post-entry:active {
-    transform: scale(0.99);
-}
-
-.entry-header {
-    flex: 1;
-    /* text-align: left; */
-}
-
-.entry-header h2 {
-    font-size: 16px;
-}
-
-.entry-hint-parent {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.post-title{
-    margin-bottom: 10px;
-
-}
-
-
-.entry-footer {
-    display: flex;
-    align-items: center;
-    text-align: right;
-    color: var(--secondary);
-    font-size: 13px;
-    padding: 0px 10px;
-}
-
-/* draft和pin */
-.pin-badge,
-.entry-hint {
-    display: inline-block;
-
-    font-size: 0.8em;
-    font-weight: 600;
-    line-height: 1;
-
-
-    color: var(--secondary);
-    /* 深色字体 */
-
-    vertical-align: middle;
-    margin-left: 3px;
-    /* 如果标签在最左侧 */
-
-}
-
-/* 解决移动端长数学公式撑破页面的问题 */
-.katex-display {
-    display: block;
+.bilibili-frame {
+    position: absolute;
     width: 100%;
-    overflow-x: auto;
-    /* 核心：超出宽度时，公式内部支持横向滚动 */
-    overflow-y: hidden;
-    /* 隐藏纵向滚动条 */
-    -webkit-overflow-scrolling: touch;
-    /* 优化 iOS 设备的滑动流畅度 */
-    padding-bottom: 8px;
-    /* ⚠️ 重要：给滚动条留出空间，避免遮挡公式底部的下标（如 \sum_{i=1}） */
+    height: 100%;
+    left: 0;
+    top: 0;
 }
 
-/* 优雅地微调公式滚动条（避免默认滚动条过粗影响美观） */
-.katex-display::-webkit-scrollbar {
-    height: 4px;
-    /* 滚动条高度 */
+/* 页脚座右铭平滑淡入淡出 */
+.motto-text {
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    min-height: 1.5em; /* 预留行高，防文字高度不同造成布局跳动 */
 }
 
-.katex-display::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.15);
-    /* 浅灰色半透明滚动条 */
-    border-radius: 4px;
-}
-
-/* 如果您的网站支持深色模式，可以微调滚动条在深色模式下的颜色 */
-.dark .katex-display::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-
-/* 
-   将 CSS 变量映射到 Hugo (Chroma) 的代码分类类名上
-   这样，当切换主题导致变量值改变时，代码颜色会瞬间且无延迟地随之切换。
-*/
-
-/* 1. 关键字（Keywords） */
-.chroma .k, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr { 
-    color: var(--code-keyword); 
-}
-
-/* 2. 字符串（Strings） */
-.chroma .s, .chroma .s1, .chroma .s2, .chroma .sb, .chroma .sc { 
-    color: var(--code-string); 
-}
-
-/* 3. 注释（Comments） */
-.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1 { 
-    color: var(--code-comment); 
-    font-style: italic; /* 注释使用斜体更显精致 */
-}
-
-/* 4. 数字（Numbers） */
-.chroma .m, .chroma .mi, .chroma .mf, .chroma .mo { 
-    color: var(--code-number); 
-}
-
-/* 5. 函数与方法（Functions） */
-.chroma .nf, .chroma .fm { 
-    color: var(--code-function); 
-}
-
-/* 6. 运算符与符号（Operators） */
-.chroma .o, .chroma .ow { 
-    color: var(--code-operator); 
-}
-
-:root {
-    /* ... 您原有的其他变量 ... */
-
-    /* 浅色模式代码高亮变量 (GitHub 风格) */
-    --code-keyword: #d73a49;   /* 关键字（如 if, return）：粉红 */
-    --code-string: #032f62;    /* 字符串（如 "hello"）：深蓝 */
-    --code-comment: #6a737d;   /* 注释：雅致灰 */
-    --code-number: #005cc5;    /* 数字：天蓝 */
-    --code-function: #6f42c1;  /* 函数名：罗兰紫 */
-    --code-operator: #e36209;  /* 运算符（如 +, =, &&）：橙色 */
-}
-
-:root[data-theme="dark"] {
-    /* ... 您原有的其他变量 ... */
-
-    /* 深色模式代码高亮变量 (Dracula 风格) */
-    --code-keyword: #ff79c6;   /* 关键字：霓虹粉 */
-    --code-string: #f1fa8c;    /* 字符串：淡黄 */
-    --code-comment: #6272a4;   /* 注释：灰蓝 */
-    --code-number: #bd93f9;    /* 数字：浅紫 */
-    --code-function: #50fa7b;  /* 函数名：荧光绿 */
-    --code-operator: #ff79c6;  /* 运算符：粉红 */
-}
-
-/* 所有代码的字体 */
-.post-content code {
-    padding: 0.3rem 0.3rem;
-    font-size: 0.9em;
-    line-height: 1.5;
-    background: var(--code-bg);
-    border-radius: 0.2rem;
-}
-
-/* 大代码块的字体 */
-.md-content pre code {
-    display: grid;
-    margin: auto 0;
-    padding: 10px;
-    color: var(--primary);
-    background: var(--code-block-bg) !important;
-    border-radius: var(--radius);
-    overflow-x: auto;
-    word-break: break-all;
+/* 渐隐状态 */
+.motto-text.fade-out {
+    opacity: 0;
 }

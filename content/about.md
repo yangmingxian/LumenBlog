@@ -4,6 +4,7 @@ date = "2024-08-10T22:55:00+08:00"
 # dropCap = false
 hidemeta = true
 disableShare = true
+hideTitle = true
 +++
 
 <!-- <video src="QmZgXJwFNRAyUEuU36jReXtyjESeTWEGZpcJGuWSnbRTf1" poster="../images/viva-la-vida.jpg"></video> -->

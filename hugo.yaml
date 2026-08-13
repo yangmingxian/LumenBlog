@@ -15,9 +15,8 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts", "papermod"]
+# mainsections: ["posts", "papermod"]
 
-googleAnalytics: "G-Q31RG0PX9R"
 
 minify:
   disableXML: true
@@ -81,11 +80,14 @@ outputs:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
+  description: "Lumen - Blog about life and game design"
   author: Mingxian
   # author: ["Me", "You"] # multiple authors
   # images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "2006.01.02"
+
+  mainSections:
+    - posts
 
   defaultTheme: auto # to switch between dark or light according to browser theme
   # defaultTheme: light
@@ -125,7 +127,7 @@ params:
   #   emitMetadata : "0"
   #   lang : "en"
 
-  images: ["static/images/papermod-cover.png"]
+  images: ["images/cover.png"]
 
   profileMode:
     enabled: false
@@ -154,11 +156,11 @@ params:
   socialIcons:
     - name: github
       title: View Source on Github
-      url: "https://github.com/yangmingxin"
+      url: "https://github.com/yangmingxian"
 
     - name: KoFi
       title: Buy me a Ko-Fi :)
-      url: "https://ko-fi.com/yangmingxin"
+      url: "https://ko-fi.com/yangmingxian"
 
   editPost:
     URL: "https://github.com/yangmingxian/LumenBlog/edit/master/content"
@@ -176,7 +178,7 @@ params:
   #     SiteVerificationTag: "XYZabc"
 
   assets:
-    disableHLJS: false
+    disableHLJS: true # 明确使用 Chroma 服务端高亮，不加载第三方 Highlight.js
   #     favicon: "<link / abs url>"
   #     favicon16x16: "<link / abs url>"
   #     favicon32x32: "<link / abs url>"
@@ -193,7 +195,7 @@ params:
     shouldSort: true
     location: 0
     distance: 1000
-    threshold: 0.4
+    threshold: 0.3 # 原为 0.4。调小至 0.3 会让中文搜索结果更精准，减少无关词混入
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
 
@@ -242,3 +244,5 @@ services:
     disableInlineCSS: true
   x:
     disableInlineCSS: true
+  googleAnalytics:
+    id: "G-Q31RG0PX9R"

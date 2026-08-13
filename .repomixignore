@@ -1,0 +1,16 @@
+# Add patterns to ignore here, one per line
+# Example:
+# *.log
+# tmp/
+
+
+# 忽略所有 .后缀文件
+**/*.svg
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.md
+
+# 精确忽略
+themes/PaperMod/layouts/_partials/svg.html

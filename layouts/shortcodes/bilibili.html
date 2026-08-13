@@ -1,21 +1,3 @@
-<style>
-    .aspect-ratio {
-        position: relative;
-        /* width: 100%; */
-        /* height: 100%; */
-        padding-bottom: 56.25%;
-    }
-
-    .aspect-ratio iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-    }
-</style>
-
-
 {{/* Bilibili video shortcode. */}}
 {{/* Parameters : */}}
 {{/* - id (#0) : the video ID, such as BVXXXXXXXXXX. */}}
@@ -31,7 +13,8 @@
 {{- $id = .Get 0 }}
 {{- end }}
 
-<div align=center class="aspect-ratio">
-<iframe class="bilibili-frame" src="https://player.bilibili.com/player.html?bvid={{ $id }}" scrolling="no" border="0"
-    frameborder="no" framespacing="0" {{ if $fullscreen }}allowfullscreen{{ end }}>
-</iframe></div>
+<div class="bilibili" title="bilibili" data-bvid="{{ $id }}">
+    <iframe class="bilibili-frame" src="https://player.bilibili.com/player.html?bvid={{ $id }}" scrolling="no"
+        frameborder="no" framespacing="0" {{ if $fullscreen }}allowfullscreen{{ end }}>
+    </iframe>
+</div>

@@ -1,4 +1,8 @@
 public/
+.hugo_build.lock
+resources/_gen/
+.DS_Store
+.wrangler/
 
 # wrangler files
 .wrangler
@@ -6,3 +10,5 @@ public/
 !.dev.vars.example
 .env*
 !.env.example
+
+repomix-output.xml
