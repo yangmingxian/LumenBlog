@@ -6,7 +6,7 @@ categories = ["life"]
 slug = "besides_abyss"
 indent = false
 dropCap = false
-# draft = true
+draft = true
 weight = 1  
 pin= true  # 菜单项的权重，越小越靠前
 +++

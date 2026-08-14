@@ -27,7 +27,8 @@
 {{- if (not site.Params.disableScrollToTop) }}
 <a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/>
+        <path
+            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z" />
     </svg>
 </a>
 {{- end }}
@@ -150,59 +151,50 @@
 </script>
 {{- end }}
 
+
 <script>
     (function () {
         const mottoEl = document.getElementById("motto-text");
         if (!mottoEl) return;
 
-        let mottos = [];
-        let currentIndex = -1;
+        // 直接从 Hugo 数据对象获取（无需额外请求）
+        const mottos = {{ (site.Data.mottos | jsonify) | safeJS
+    }};
+    let currentIndex = -1;
 
-        // 不重复抽取算法
-        function getRandomIndex() {
-            if (mottos.length <= 1) return 0;
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * mottos.length);
-            } while (newIndex === currentIndex);
-            return newIndex;
-        }
+    // 如果数据为空或无效，显示保底文本
+    if (!Array.isArray(mottos) || mottos.length === 0) {
+        mottoEl.textContent = "当你下定决心的时候 结果便成了副产物";
+        return;
+    }
 
-        // 切换动画与内容
-        function updateMotto() {
-            if (mottos.length === 0) return;
-            mottoEl.classList.add("fade-out"); // 淡出
+    // 不重复抽取算法
+    function getRandomIndex() {
+        if (mottos.length <= 1) return 0;
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * mottos.length);
+        } while (newIndex === currentIndex);
+        return newIndex;
+    }
 
-            setTimeout(() => {
-                currentIndex = getRandomIndex();
-                mottoEl.textContent = mottos[currentIndex];
-                mottoEl.classList.remove("fade-out"); // 淡入
-            }, 600); // 对应 CSS 0.6s 动画时长
-        }
+    // 切换动画与内容
+    function updateMotto() {
+        mottoEl.classList.add("fade-out");
+        setTimeout(() => {
+            currentIndex = getRandomIndex();
+            mottoEl.textContent = mottos[currentIndex];
+            mottoEl.classList.remove("fade-out");
+        }, 600);
+    }
 
-        // 异步读取 static/mottos.json 文件
-        fetch('/mottos.json')
-            .then(res => {
-                if (!res.ok) throw new Error("加载 static/mottos.json 失败");
-                return res.json();
-            })
-            .then(data => {
-                if (Array.isArray(data) && data.length > 0) {
-                    mottos = data;
-                    // 页面首次渲染：随机显示一条
-                    currentIndex = getRandomIndex();
-                    mottoEl.textContent = mottos[currentIndex];
+    // 首次显示
+    currentIndex = getRandomIndex();
+    mottoEl.textContent = mottos[currentIndex];
 
-                    // 如果有多于 1 条座右铭，开启定时切换（如每 10 秒切换一次）
-                    if (mottos.length > 1) {
-                        setInterval(updateMotto, 10000);
-                    }
-                }
-            })
-            .catch(err => {
-                // 如果文件未找到或报错，显示保底文本
-                mottoEl.textContent = "当你下定决心的时候 结果便成了副产物";
-                console.error(err);
-            });
-    })();
+    // 多于一条时开启定时切换（每10秒）
+    if (mottos.length > 1) {
+        setInterval(updateMotto, 10000);
+    }
+  }) ();
 </script>
